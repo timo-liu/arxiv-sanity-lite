@@ -10,6 +10,8 @@ import random
 import logging
 import argparse
 
+#from anthology import Anthology
+
 from aslite.arxiv import get_response, parse_response
 from aslite.db import get_papers_db, get_metas_db
 
@@ -30,7 +32,7 @@ if __name__ == '__main__':
     """
 
     # query string of papers to look for
-    q = 'cat:cs.CV+OR+cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.AI+OR+cat:cs.NE+OR+cat:cs.RO'
+    q = 'cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.AI+OR+cat:cs.NE'
 
     pdb = get_papers_db(flag='c')
     mdb = get_metas_db(flag='c')
@@ -102,6 +104,8 @@ if __name__ == '__main__':
 
         # zzz
         time.sleep(1 + random.uniform(0, 3))
+
+    # if I feel like it, add acl anthology call
 
     # exit with OK status if anything at all changed, but if nothing happened then raise 1
     sys.exit(0 if total_updated > 0 else 1)
